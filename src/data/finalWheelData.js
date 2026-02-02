@@ -1,0 +1,15 @@
+export const finalWheelData = [
+  { label: "2000", value: 2000, color: "#e74c3c" },
+  { label: "3500", value: 3500, color: "#e74c3c" },
+  { label: "2000", value: 2000, color: "#e74c3c" },
+  { label: "6000", value: 6000, color: "#e74c3c" },
+  { label: "2000", value: 2000, color: "#e74c3c" },
+  { label: "3500", value: 3500, color: "#e74c3c" },
+  { label: "2500", value: 2500, color: "#e74c3c" },
+  { label: "Coche", value: "coche", color: "#e74c3c" },
+  { label: "2000", value: 2000, color: "#e74c3c" },
+  { label: "2000", value: 2000, color: "#e74c3c" },
+  { label: "3500", value: 3500, color: "#e74c3c" },
+  { label: "4500", value: 4500, color: "#e74c3c" },
+  { label: "6000", value: 6000, color: "#e74c3c" },
+];

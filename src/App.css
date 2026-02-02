@@ -1,0 +1,111 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.player-scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  gap: 10px;
+}
+
+.player-card {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-card h3 {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.player-card span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.player-card.current-player {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.5);
+}
+
+.player-card.current-player h3 {
+  color: white;
+}
+
+.resolve-button {
+  padding: 10px 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #d35400;
+  transition: background-color 0.2s ease;
+}
+
+.resolve-button:hover:not(:disabled) {
+  background-color: #e67e22;
+}
+
+.resolve-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.resolve-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+.resolve-input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.resolve-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

@@ -1,0 +1,69 @@
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 55vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 300px;
+}
+
+.keyboard-button {
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #2100b3;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.keyboard-button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.keyboard-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background-color: #eee;
+}
+
+.letter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.vowel-wrapper {
+  border: 1px solid #2980b9;
+  border-radius: 5px;
+  padding: 5 px;
+}
+
+.vowel-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.buy-button {
+  width: 70px;
+  font-size: 0.7rem;
+  padding: 4px 0;
+  border-radius: 4px;
+  border: 1px solid #2ecc71;
+  background-color: #27ae60;
+  color: white;
+  cursor: pointer;
+}
+
+.buy-button:disabled {
+  background-color: #ccc;
+  border: 1px solid #999;
+  cursor: not-allowed;
+}

@@ -1,0 +1,18 @@
+.final-wheel-container {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  margin: 20px auto;
+}
+
+.final-pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: red;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  transform: translate(-50%, -150%) rotate(90deg);
+  z-index: 10;
+}
