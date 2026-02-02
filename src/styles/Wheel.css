@@ -6,6 +6,12 @@
   width: 400px;
   height: 400px;
   margin: 50px auto;
+  /* Efecto de anillo exterior */
+  border: 10px solid #1e293b;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 5px var(--accent),
+    0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .wheel {
@@ -14,17 +20,38 @@
   height: 100%;
   transform-origin: center center;
   cursor: pointer;
+  border-radius: 50%;
+  /* Sombra interna para dar profundidad a las porciones */
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.2);
 }
 
 .wheel-pointer {
   position: absolute;
-  top: -20px;
+  top: -25px;
   left: 50%;
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid rgb(87, 84, 84);
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  /* Puntero cromado/dorado */
+  border-bottom: 40px solid var(--accent);
   transform: translateX(-50%) rotate(180deg);
   z-index: 10;
+  filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* El eje central de la ruleta */
+.wheel-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #f8fafc 0%, #94a3b8 100%);
+  border: 4px solid #1e293b;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }

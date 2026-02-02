@@ -1,111 +1,144 @@
+:root {
+  --primary: #6366f1;
+  --secondary: #a855f7;
+  --accent: #f59e0b;
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
+  font-family: "Inter", system-ui, sans-serif;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  color: var(--text-main);
   margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .app-container {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 250px 1fr 250px;
+  gap: 30px;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 95vw;
+  max-width: 1400px;
+  height: 85vh;
+  padding: 40px;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .player-scores {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 100%;
-  width: 100%;
-  gap: 10px;
+  gap: 15px;
 }
 
 .player-card {
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: #e0e0e0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  flex: 1;
-  min-width: 100px;
-  display: flex;
-  flex-direction: column;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .player-card h3 {
-  font-size: 1.1rem;
-  color: #555;
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
 }
 
 .player-card span {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .player-card.current-player {
-  background-color: #4caf50;
-  color: white;
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.5);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  transform: translateX(10px) scale(1.02);
+  border: none;
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-.player-card.current-player h3 {
+.player-card.current-player h3,
+.player-card.current-player span {
   color: white;
+  -webkit-text-fill-color: white;
 }
 
 .resolve-button {
-  padding: 10px 20px;
-  font-size: 2rem;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   cursor: pointer;
-  background-color: #f39c12;
+  background: linear-gradient(to bottom, var(--accent), #d97706);
   color: white;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0 4px #d35400;
-  transition: background-color 0.2s ease;
+  border-radius: 12px;
+  box-shadow:
+    0 4px 0 #b45309,
+    0 10px 20px rgba(245, 158, 11, 0.3);
+  transition: all 0.1s active;
 }
 
 .resolve-button:hover:not(:disabled) {
-  background-color: #e67e22;
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.resolve-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 0px 0 #b45309;
 }
 
 .resolve-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  background: #334155;
   box-shadow: none;
-}
-
-.resolve-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 500px;
-  margin-top: 20px;
+  color: #64748b;
 }
 
 .resolve-input {
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background: #0f172a;
+  border: 2px solid #334155;
+  border-radius: 12px;
+  padding: 15px;
+  color: white;
+  font-size: 1.1rem;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
-.resolve-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.resolve-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    height: auto;
+    width: 90vw;
+    padding: 20px;
+  }
+  .player-scores {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }

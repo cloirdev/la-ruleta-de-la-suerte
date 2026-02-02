@@ -1,13 +1,13 @@
 import React from "react";
 import "../styles/PuzzlePanel.css";
 
-const PuzzlePanel = ({ phrase, guessedLetters, hint }) => {
+const PuzzlePanel = React.memo(({ phrase, guessedLetters, hint }) => {
   const numRows = 4;
   const numCols = 14;
   const totalAvailableCells = numRows * numCols - 4;
 
   const panelGrid = Array.from({ length: numRows }, () =>
-    Array(numCols).fill(null)
+    Array(numCols).fill(null),
   );
   const phraseCharacters = phrase.toUpperCase().split("");
 
@@ -65,7 +65,7 @@ const PuzzlePanel = ({ phrase, guessedLetters, hint }) => {
                 {isGuessed || isSpace ? char : ""}
               </span>
             );
-          })
+          }),
         )}
       </div>
       <div className="hint-panel">
@@ -74,6 +74,6 @@ const PuzzlePanel = ({ phrase, guessedLetters, hint }) => {
       </div>
     </div>
   );
-};
+});
 
 export default PuzzlePanel;

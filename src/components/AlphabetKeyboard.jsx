@@ -2,61 +2,65 @@ import React from "react";
 
 import "../styles/AlphabetKeyboard.css";
 
-const AlphabetKeyboard = ({
-  guessedLetters,
+const AlphabetKeyboard = React.memo(
+  ({
+    guessedLetters,
 
-  onGuessConsonant,
+    onGuessConsonant,
 
-  onBuyVowel,
+    onBuyVowel,
 
-  gameState,
+    gameState,
 
-  roundScore,
+    roundScore,
 
-  VOWEL_COST,
-}) => {
-  const alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+    VOWEL_COST,
+  }) => {
+    const alphabet = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
 
-  const vowels = "AEIOU".split("");
+    const vowels = "AEIOU".split("");
 
-  return (
-    <div className="keyboard-container">
-      {alphabet.map((letter) => {
-        const isVowel = vowels.includes(letter);
+    return (
+      <div className="keyboard-container">
+        {alphabet.map((letter) => {
+          const isVowel = vowels.includes(letter);
 
-        const isGuessed = guessedLetters.has(letter);
+          const isGuessed = guessedLetters.has(letter);
 
-        const canAffordVowel = roundScore >= VOWEL_COST;
+          const canAffordVowel = roundScore >= VOWEL_COST;
 
-        if (isVowel) {
-          return (
-            <div key={letter} className="letter-wrapper vowel-wrapper">
-              <span className="vowel-label">{letter}</span>
+          if (isVowel) {
+            return (
+              <div key={letter} className="letter-wrapper vowel-wrapper">
+                <span className="vowel-label">{letter}</span>
 
+                <button
+                  className="buy-button"
+                  onClick={() => onBuyVowel(letter)}
+                  disabled={
+                    isGuessed || !canAffordVowel || gameState !== "ready"
+                  }
+                >
+                  Comprar ({VOWEL_COST})
+                </button>
+              </div>
+            );
+          } else {
+            return (
               <button
-                className="buy-button"
-                onClick={() => onBuyVowel(letter)}
-                disabled={isGuessed || !canAffordVowel || gameState !== "ready"}
+                key={letter}
+                className="keyboard-button"
+                onClick={() => onGuessConsonant(letter)}
+                disabled={isGuessed || gameState !== "guessing"}
               >
-                Comprar ({VOWEL_COST})
+                {letter}
               </button>
-            </div>
-          );
-        } else {
-          return (
-            <button
-              key={letter}
-              className="keyboard-button"
-              onClick={() => onGuessConsonant(letter)}
-              disabled={isGuessed || gameState !== "guessing"}
-            >
-              {letter}
-            </button>
-          );
-        }
-      })}
-    </div>
-  );
-};
+            );
+          }
+        })}
+      </div>
+    );
+  },
+);
 
 export default AlphabetKeyboard;
